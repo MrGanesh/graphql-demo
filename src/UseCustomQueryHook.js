@@ -1,6 +1,6 @@
 import React from "react"
 import {useQuery, gql} from "@apollo/client"
-
+import {Link} from 'react-router-dom'
 const QUERY_INPUT = gql`
 query{
   characters{
@@ -20,14 +20,14 @@ if(loading) return <h1>Loading...</h1>
 if(error) return <h1>Error: {error.message}</h1>
 console.log(data)
 return(
-  <div style={{display:'flex', flexDirection:'column'}}>
+  <div style={{display:'flex', flexWrap:'wrap'}}>
     {
       data.characters.results.map(item => {
         return(
-          <div style={{ margin:'20px'}}>
+          <Link to={`/${item.id}`} style={{ margin:'20px'}}>
             <img src={item.image} style={{ width: '100px', height: '100px' }} />
             <p>{item.name}</p>
-          </div>)
+          </Link>)
       })
     }
   </div>
