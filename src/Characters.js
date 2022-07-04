@@ -19,9 +19,10 @@ export default function Characters(){
       id:4
     }
   })
-
+  if(loading) return <h1>Loading...</h1>
+  if(error) return <h1>Error: {error.message}</h1>
   return(
     <div>
-      </div>
+    </div>
   )
 }
